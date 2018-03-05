@@ -10,14 +10,13 @@ class GuestBook
 {
     public $bookArray;
     public $res;
-    protected $guestBook;
     public function __construct($path)
     {
-        $this->guestBook = $path;
+        $this->path = $path;
     }
     public function getData()
     {
-        $this->bookArray = file($this->guestBook);
+        $this->bookArray = file($this->path);
         return $this->bookArray;
     }
     public function append($text)
@@ -26,7 +25,7 @@ class GuestBook
     }
     public function save()
     {
-        $this->res = fopen($this->guestBook, 'r+');
+        $this->res = fopen($this->path, 'r+');
         foreach ($this->bookArray as $recordLine) {
             fwrite($this->res, $recordLine);
         }
