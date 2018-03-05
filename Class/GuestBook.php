@@ -8,26 +8,26 @@
 
 class GuestBook
 {
-    public $line;
+    public $bookArray;
     public $res;
-    protected $file;
-    public function __construct($data)
+    protected $guestBook;
+    public function __construct($path)
     {
-        $this->file = $data;
+        $this->guestBook = $path;
     }
     public function getData()
     {
-        $this->line = file($this->file);
-        return $this->line;
+        $this->bookArray = file($this->guestBook);
+        return $this->bookArray;
     }
     public function append($text)
     {
-        $this->line[] = $text;
+        $this->bookArray[] = $text;
     }
     public function save()
     {
-        $this->res = fopen($this->file, 'r+');
-        foreach ($this->line as $recordLine) {
+        $this->res = fopen($this->guestBook, 'r+');
+        foreach ($this->bookArray as $recordLine) {
             fwrite($this->res, $recordLine);
         }
         fwrite($this->res, "\n");

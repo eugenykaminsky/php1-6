@@ -12,16 +12,11 @@ require_once __DIR__ . '/Class/GuestBook.php';
 </head>
 <body>
 <?php
-$data = __DIR__ . '/data.txt';
-$guest = new GuestBook($data);
-$x = $guest -> getData();
-var_dump($x);
-$guest -> append("Привет, мир");
-$y = $guest -> line;
-var_dump($y);
+$path = __DIR__ . '/data.txt';
+$guest = new GuestBook($path);
+$guest -> getData();
+$guest -> append("Новая запись");
 $guest -> save();
 ?>
-
-
 </body>
 </html>
