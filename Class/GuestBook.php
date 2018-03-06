@@ -28,10 +28,6 @@ class GuestBook
     }
     public function save()
     {
-        $this->res = fopen($this->path, 'r+');
-        foreach ($this->data as $recordLine) {
-            fwrite($this->res, $recordLine);
-        }
-        fwrite($this->res, "\n");
+        file_put_contents($this->path, $this->data);
     }
 }
