@@ -8,25 +8,28 @@
 
 class GuestBook
 {
-    public $bookArray;
     public $res;
+    protected $data;
+
     public function __construct($path)
     {
         $this->path = $path;
+        $this->data = file($this->path);  // В защищенном свойстве data сохраним данные (массив),
+        // полученные из файла с данными гостевой книги. Файл находим по абсолютному пути,
+        // получаемом из аргумента $path
     }
     public function getData()
     {
-        $this->bookArray = file($this->path);
-        return $this->bookArray;
+        return $this->data; // возвращаю массив записей гостевой книги
     }
     public function append($text)
     {
-        $this->bookArray[] = $text;
+        $this->data[] = $text;
     }
     public function save()
     {
         $this->res = fopen($this->path, 'r+');
-        foreach ($this->bookArray as $recordLine) {
+        foreach ($this->data as $recordLine) {
             fwrite($this->res, $recordLine);
         }
         fwrite($this->res, "\n");

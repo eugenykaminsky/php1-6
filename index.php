@@ -15,7 +15,7 @@ require_once __DIR__ . '/Class/GuestBook.php';
 $path = __DIR__ . '/data.txt';
 $guest = new GuestBook($path);
 $guest -> getData();
-$guest -> append("Еще одна запись");
+$guest -> append("Еще одна новая запись");
 $guest -> save();
 ?>
 </body>
