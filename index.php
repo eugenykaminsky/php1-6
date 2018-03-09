@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/Class/GuestBook.php';
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,7 +17,12 @@ $path = __DIR__ . '/data.txt';
 $guest = new GuestBook($path);
 $guest -> getData();
 $guest -> append("Еще одна новая запись2");
-$guest -> save();
-?>
+$guest -> save(); ?>
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="myimg">
+    <button type="submit">Отправить</button>
+</form>
+
+
 </body>
 </html>
